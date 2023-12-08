@@ -7,7 +7,7 @@ This extension is designed to prime the cache of your Magento shop when the cach
 ```
 composer require controlaltdelete/magento2-cache-primer
 
-bin/magento setup:module
+bin/magento setup:upgrade
 ```
 
 ## Configuration
