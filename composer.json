@@ -1,0 +1,23 @@
+{
+    "name": "controlaltdelete/magento2-cache-primer",
+    "description": "A Magento 2 module that will prime the cache after it is flushed leveraging the queue",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Michiel Gerritsen",
+            "email": "michiel@controlaltdelete.nl"
+        }
+    ],
+    "require": {
+        "php": "~8.1"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "ControlAltDelete\\CachePrimer\\": "src/"
+        }
+    }
+}

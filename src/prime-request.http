@@ -1,0 +1,58 @@
+###
+# @name Get admin token
+POST {{host}}/rest/default/V1/integration/admin/token
+Content-Type: application/json
+
+{
+  "username": "michiel",
+  "password": "asdfasdf1"
+}
+
+> {%
+    client.test('response is ok', () => {
+        client.assert(response.status === 200);
+    });
+
+    client.global.set('admin_token', response.body);
+%}
+
+###
+# @name Prime the specific tag
+POST {{host}}/rest/default/V1/controlaltdelete/cache-primer/prime
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+    "tag": "cat_p_1"
+}
+
+###
+# @name Prime the specific tag
+POST {{host}}/rest/default/V1/controlaltdelete/cache-primer/prime
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+    "tag": "cat_c_1"
+}
+
+###
+# @name Prime the specific tag
+POST {{host}}/rest/default/V1/controlaltdelete/cache-primer/prime
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+    "tag": "cat_c_p_1"
+}
+
+
+###
+# @name Prime all categories
+POST {{host}}/rest/default/V1/controlaltdelete/cache-primer/prime
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+    "tag": "cat_c"
+}
