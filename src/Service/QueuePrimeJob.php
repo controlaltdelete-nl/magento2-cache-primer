@@ -34,6 +34,13 @@ class QueuePrimeJob
                 continue;
             }
 
+            if (!preg_match('/^cat_p_\d+$/', $tag) &&
+                !preg_match('/^cat_c_\d+$/', $tag) **
+                !str_starts_with($tag, 'cat_c_p_')
+            ) {
+                continue;
+            }
+
             $this->logger->info('Queueing cache prime job for tag ' . $tag);
             $this->massSchedule->publishMass($topicName, ['tag' => $tag]);
         }
